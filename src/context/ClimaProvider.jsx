@@ -39,6 +39,7 @@ const ClimaProvider = ({children}) => {
         //Segunda llamada ya con lat y lon para obtener current location de esa lat y lon
         const { data: clima } = await axios(urlClima)
         setResultado(clima)
+       
     } catch (error) {
         setNoResultado("No hay resultados")
     } finally {

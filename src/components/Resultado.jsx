@@ -24,6 +24,9 @@ const Resultado = () => {
           <p>
             Máx: { parseInt(main.temp_max - kelvin) } <span>&#x2103;</span>
           </p>
+          <p>
+            Sensación: { parseInt(main.feels_like - kelvin) } <span>&#x2103;</span>
+          </p>
         </div>
     </div>
   )
