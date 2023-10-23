@@ -24,18 +24,18 @@ const ClimaProvider = ({children}) => {
   //Llamada API con Axios
   const consultarClima = async datos => {
     setCargando(true)
-    setNoResultado("")
+    setNoResultado(false)
     try {
         const { ciudad, pais } = datos
 
         const appId = import.meta.env.VITE_API_KEY
 
-        const url = `https://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${appId}`
+        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${appId}`
         //Primera llamada para adquirir lay y lon con lo escrito ingresado en el form
         const { data } = await axios(url)
         const { lat,lon } = data[0]
 
-        const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
+        const urlClima = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
         //Segunda llamada ya con lat y lon para obtener current location de esa lat y lon
         const { data: clima } = await axios(urlClima)
         setResultado(clima)
